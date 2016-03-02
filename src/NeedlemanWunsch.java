@@ -1,4 +1,4 @@
-import java.lang.String;import java.lang.StringBuilder;import java.lang.System; /**
+/**
  * Created by user on 13/02/16.
  */
 public class NeedlemanWunsch {
