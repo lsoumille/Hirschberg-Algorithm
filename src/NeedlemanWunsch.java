@@ -21,7 +21,7 @@ public class NeedlemanWunsch {
         y = b;
         xlen = x.length();
         ylen = y.length();
-        scoreArray = new int[ylen+1][xlen+1];
+        scoreArray = new int[ylen + 1][xlen + 1];
     }
 
     /**
@@ -32,42 +32,25 @@ public class NeedlemanWunsch {
         int northwest, north, west;
         int best;
         //init de la premiere colonne et de la première ligne
-        for (col=0 ; col <= xlen ; col++)
+        for (col = 0 ; col <= xlen ; ++col)
             scoreArray[0][col] = gapscore * col;
-        for (row=0 ; row <= ylen ; row++)
+        for (row = 0 ; row <= ylen ; ++row)
             scoreArray[row][0] = gapscore * row;
         // remplissage de la matrice
-        for (row=1; row <= ylen; row++) {
-            for (col=1; col <= xlen; col++) {
-                if (x.charAt(col-1)==y.charAt(row-1))
-                    northwest = scoreArray[row-1][col-1] + matchscore;
+        for (row = 1; row <= ylen; ++row) {
+            for (col = 1; col <= xlen; ++col) {
+                if (x.charAt(col - 1) == y.charAt(row - 1))
+                    northwest = scoreArray[row - 1][col - 1] + matchscore;
                 else
-                    northwest = scoreArray[row-1][col-1] + mismatchscore;
-                west = scoreArray[row][col-1] + gapscore;
-                north = scoreArray[row-1][col] + gapscore;
+                    northwest = scoreArray[row - 1][col - 1] + mismatchscore;
+                west = scoreArray[row][col - 1] + gapscore;
+                north = scoreArray[row - 1][col] + gapscore;
                 best = northwest;
                 //On regarde qui est le meilleur
-                if (north>best) best = north;
-                if (west>best) best = west;
+                if (north > best) best = north;
+                if (west > best) best = west;
                 scoreArray[row][col] = best;
             }
-        }
-    }
-
-    public void print3(int x) {
-        // Print x in 3 spaces
-        String s = ""+x;
-        if (s.length() == 1) System.out.print("  "+s);
-        else if (s.length() == 2) System.out.print(" "+s);
-        else if (s.length() == 3) System.out.print(s);
-        else System.out.print("***");
-    }
-
-    public void printArray() {
-        for (int row=0; row < scoreArray.length; row++) {
-            for (int col=0; col < scoreArray[row].length; col++)
-                print3(scoreArray[row][col]);
-            System.out.println();
         }
     }
 
@@ -82,9 +65,9 @@ public class NeedlemanWunsch {
         this.y = y;
         this.xlen = x.length();
         this.ylen = y.length();
-        scoreArray = new int[ylen+1][xlen+1];
+        scoreArray = new int[ylen + 1][xlen + 1];
         fillScoreArray();
-        int[] res = new int[xlen +1];
+        int[] res = new int[xlen + 1];
         for(int i = 0 ; i <= xlen  ; ++i)
             res[i] = scoreArray[ylen][i];
         return res;

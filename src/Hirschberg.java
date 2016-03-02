@@ -6,7 +6,6 @@ public class Hirschberg {
     public Hirschberg() {
     }
 
-
     /**
      * retourne l'indice k pour couper le mot x
      * @param upScores
@@ -34,8 +33,6 @@ public class Hirschberg {
     public String[] processHirschberg(String wordx, String wordy){
         String[] tab = new String[2];
         tab[0] = tab[1] = "";
-        /*String Z = "";
-        String W = "";*/
         if(wordx.length() == 0){
             //on remplit X de -
             for(int i = 0 ; i < wordy.length() ; ++i){
@@ -53,7 +50,6 @@ public class Hirschberg {
             nw.fillScoreArray();
             tab = nw.getAlignement();
         } else {
-            int lengthx = wordx.length();
             int lengthy = wordy.length();
             int decoupageY = (lengthy / 2);
             NeedlemanWunsch nw = new NeedlemanWunsch();

@@ -5,7 +5,9 @@ public class TestAlgo {
 
     public static void main(String[] args) {
         Hirschberg hi = new Hirschberg();
-        String[] res = hi.processHirschberg("PYTHON", "PONY");
+        String mot1 = "croisade";
+        String mot2 = "croisee";
+        String[] res = hi.processHirschberg(mot1.toUpperCase(), mot2.toUpperCase());
         for(String str : res)
             System.out.println(str);
     }
